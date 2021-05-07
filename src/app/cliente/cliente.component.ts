@@ -24,9 +24,6 @@ export class ClienteComponent implements OnInit {
   
   populateForm(selectedRecord: Cliente)  {
     this.service.formData = Object.assign({}, selectedRecord);
-    // this.service.formData.municipio = "";
-    // this.service.formData.estado = "";
-    //this.cc.changeCountry(selectedRecord.estado)
   }
   
   onDelete(id: number) {

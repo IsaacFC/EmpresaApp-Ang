@@ -10,7 +10,6 @@ import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.compon
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { SearchfilterPipe } from './pipes/searchfilter.pipe';
-import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
   ],
   imports: [
     BrowserModule,
-    DropDownListModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
