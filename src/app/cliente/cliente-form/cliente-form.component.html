@@ -1,0 +1,55 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)" (reset)="resetForm(form)">
+    <input type="hidden" name="paymentDetailId" [value]="service.formData.clienteId" />
+    <div class="form-group">
+        <label>Nombre del Cliente</label>
+        <input class="form-control form-control-lg" placeholder="Nombre Completo" name="nombre" #nombre="ngModel"
+            [(ngModel)]="service.formData.nombre" required [class.invalid]="nombre.invalid && nombre.touched"
+            maxlength="100">
+    </div>
+    <div class="form-group">
+        <label>RFC</label>
+        <input class="form-control form-control-lg" placeholder="RFC" name="rfc" #rfc="ngModel"
+            [(ngModel)]="service.formData.rfc" required [class.invalid]="rfc.invalid && rfc.touched" maxlength="13"
+            minlength="12">
+    </div>
+    <div class="form-group">
+        <label>Estado</label>
+        <select class="form-control form-control-lg" name="estado" #estado="ngModel" id="estado"
+        required [class.invalid]="estado.invalid && estado.touched"
+        [(ngModel)]="service.formData.estado" >
+            <option selected disabled value>--Estado--</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Chihuahua">Chihuahua</option>
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Municipio</label>
+        <select class="form-control form-control-lg" name="municipio" #municipio="ngModel"
+        required [class.invalid]="estado.invalid && estado.touched"
+        [(ngModel)]="service.formData.municipio" >
+            <option selected disabled value>--Municipio--</option>
+            
+			<option *ngIf="service.formData.estado == 'Sonora'">Nogales</option>
+			<option *ngIf="service.formData.estado == 'Sonora'">Hermosillo</option>
+			<option *ngIf="service.formData.estado == 'Sonora'">Navojoa</option>
+			<option *ngIf="service.formData.estado == 'Sinaloa'">Los Mochis</option>
+			<option *ngIf="service.formData.estado == 'Sinaloa'">Guasave</option>
+			<option *ngIf="service.formData.estado == 'Sinaloa'">Culiacán</option>
+			<option *ngIf="service.formData.estado == 'Chihuahua'">Chihuahua</option>
+			<option *ngIf="service.formData.estado == 'Chihuahua'">Ciudad Juarez</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Direccion</label>
+        <textarea class="form-control form-control-lg" placeholder="Direccion" name="direccion" #direccion="ngModel"
+            [(ngModel)]="service.formData.direccion" required [class.invalid]="direccion.invalid && direccion.touched"
+            maxlength="200"></textarea>
+    </div>
+    <div class="form-row">
+            <button id="clear" class="btn btn-info btn-lg btn-form" type="reset" onclick="resetForm(this.form)">LIMPIAR</button>
+            <button id="submit" class="btn btn-info btn-lg btn-form" type="submit"
+            [disabled]="form.invalid">ENVIAR</button>
+        </div>
+</form>
